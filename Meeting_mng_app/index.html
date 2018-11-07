@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</link>
+
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+
+<body>
+        <div ng-app="exhangeApp" ng-controller="myCtrl">
+                <div class="well well-lg ciscoBaneer">
+                        <h3>Cisco Meeting Assistant</h3>
+                </div>
+                <div class="body">
+                        <div class="container">
+                                <div class="border border-primary container_one" ng-if="isHome">
+                                        <h2>Approve Kulwinder Singh request and reduce your meeting by 5 mins.</h2><br>
+                                        <div class="center">
+                                                <button type="button" ng-click="submitChangeSuggesetion('Approve')" class="btn btn-primary">Approve</button>
+                                                <button type="button" ng-click="submitChangeSuggesetion('Reject')" class="btn btn-danger">Reject</button>
+                                        </div>
+                                        <textarea class="textArea" rows="4" cols="50" placeholder="note for requester."></textarea>
+
+                                        <hr>
+                                        <h2>Or, Book another near by room with the same setting.</h2><br>
+                                        <div class="center">
+                                                <div class="meetingSugCont" ng-repeat="item in meetingSug">
+                                                        <input type="checkbox" value="item.room" ng-change="changeRoom(item)" ng-model="selectedRoom"><br>
+                                                        <div>
+                                                                <h5>{{ '{{item.room}}' }}</h5>
+                                                                <h6>{{ '{{item.biulding}}' }}</h6>
+                                                                <h6>{{ '{{item.floor}}' }}</h6>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="center">
+                                                <button type="button" ng-click="submitChangeSuggesetion('ChangeRoom')" ng-disabled="!selctedRoom" class="btn btn-primary">Change Room</button>
+                                        </div>
+                                </div>
+                                <div class="border border-primary container_one" ng-if="getCredential">
+                                        <h5>Please insert your Cisco exchange credentials</h5>
+                                        <span>User id</span><input style="margin-left: 32px;" type="text" ng-model="userPermission.userId"><br><br>
+                                        <span>Password</span><input style="margin-left: 15px;"  type="password" ng-model="userPermission.userPwd"><br><br><br>
+                                        <button type="button" ng-click="submitCred()" ng-disabled="user_id && user_pwd" class="btn btn-primary">Submit</button>
+                                </div>
+                                <div class="border border-primary container_one" ng-if="isSucess">
+                                        <h2>Your response has been submited, Thank you.</h2>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</body>
+
+</html>

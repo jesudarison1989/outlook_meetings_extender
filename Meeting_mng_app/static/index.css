@@ -1,0 +1,44 @@
+.ciscoBaneer{
+    background-color: #5f88e2;
+    color: white;
+}
+
+.body{
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    color: #676767
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.center button{
+    margin: 4px;
+}
+
+.textArea{
+    margin-left: 30%;
+}
+
+.container_one{
+    padding: 40px;
+    border: 1px solid #5f88e2;
+    border-radius: 5px;
+}
+
+.meetingSugCont{
+    border: 1px solid #5f88e2;
+    width: 250px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    float: left;
+    margin: 10px;
+}
